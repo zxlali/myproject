@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<bean id="dataSourceLoanDB" class="org.apache.tomcat.jdbc.pool.DataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="${spring.datasource.url}" />
+		<property name="username" value="${spring.datasource.username}" />
+		<property name="password" value="${spring.datasource.password}" />
+		<property name="initialSize" value="5" />
+		<property name="maxActive" value="20" />
+		<property name="maxIdle" value="10" />
+		<property name="maxWait" value="10000" />
+		<property name="testWhileIdle" value="true" />
+		<property name="validationQuery" value="select 1 from dual" />
+		<property name="validationInterval" value="30000" />
+		<property name="timeBetweenEvictionRunsMillis" value="10000" />
+	</bean>
+
+	<bean id="transactionManagerLoanDB"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSourceLoanDB" />
+		<property name="nestedTransactionAllowed" value="true"/>
+	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManagerLoanDB" />
+
+	<bean id="sqlSessionFactoryLoanDB" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSourceLoanDB" />
+		<property name="mapperLocations" value="classpath:sqlmap/*.xml"/>
+	</bean>
+
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryLoanDB" />
+		<property name="basePackage" value="com.zxl.test.myproject.dao.mapper" />
+	</bean>
+
+</beans>

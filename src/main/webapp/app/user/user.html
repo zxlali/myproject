@@ -1,0 +1,47 @@
+<div class="page-header">
+<h1>
+    User List
+    <span class="label label-default" ng-class="warningLevel()" ng-hide="count()==0">{{count()}}</span>
+</h1>
+</div>
+<div class="form-inline search-bar">
+  <div class="form-group">
+    <input ng-model="searchParams.userName" ng-keypress="enter($event)"
+      class="form-control" name="userName" placeholder="User Name" />
+  </div>  
+  <button ng-click="search()" type="button" class="btn btn-primary">
+    <span class="glyphicon glyphicon-search"></span> Search
+  </button>
+<!--  <button type="button" class="btn btn-primary pull-right"
+    ng-click="showDialogAsNew()">New</button> -->
+</div>
+<div class="panel">
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>ID</th>
+<th>UserName</th>
+<th>Email</th>
+<th>RegistrationTime</th>
+<th>isActive</th>
+</tr>
+</thead>
+<tbody>
+<tr ng-repeat="user in p_data">
+<td>{{user.id}}</td>
+<td>{{user.username}}</td>
+<td>{{user.email}}</td>
+<td>{{user.registrationTime}}</td>
+<td>{{user.isActive}}</td>
+</tr>
+</tbody>
+</table>
+<pagination total-items="p_total" ng-model="p_index"
+  class="pagination-sm pull-right" boundary-links="true" max-size="10"
+  items-per-page="p_size"></pagination>
+</div>
+<!-- <div class="checkbox-inline"> -->
+<!-- <label><input type="checkbox" ng-model="showComplete">Show Complete</label> -->
+<!-- </div> -->
+<!-- <flot dataset="dataset" options="options" height="480px" eoptions="userActiveExtraOptions"></flot> -->
+

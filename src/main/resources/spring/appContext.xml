@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!--<import resource="appContext-datasource.xml" />-->
+	<import resource="appContext-httpClient.xml"/>
+
+	<!--<bean id="daoAuthenticationProvider" class="com.zxl.test.myproject.service.DTAuthenticationProvider">-->
+		<!--<property name="userDetailsService" ref="adminUserDetailsService"/>-->
+		<!--<property name="passwordEncoder" ref="passwordEncoder"/>-->
+		<!--<property name="hideUserNotFoundExceptions" value="false"/>-->
+		<!--<property name="saltSource" ref="saltSource"/>-->
+	<!--</bean>-->
+
+	<!--<bean id="adminUserDetailsService" class="com.zxl.test.myproject.service.UserDetailService" />-->
+	<!--<bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />-->
+	<!--可以指定用户属性-->
+	<!--
+	<bean id="saltSource" class="org.springframework.security.authentication.dao.ReflectionSaltSource">
+		<property name="userPropertyToUse" value=""/>
+	</bean>
+	-->
+	<!--固定值-->
+	<!--<bean id="saltSource" class="org.springframework.security.authentication.dao.SystemWideSaltSource">-->
+		<!--<property name="systemWideSalt" value="salt-"/>-->
+	<!--</bean>-->
+</beans>

@@ -1,0 +1,426 @@
+/* 
+Author: Start Bootstrap - http://startbootstrap.com
+
+All Start Bootstrap themes are licensed under Apache 2.0. 
+For more info and more free Bootstrap 3 HTML themes, visit http://startbootstrap.com!
+*/
+
+/* ATTN: This is mobile first CSS - to update 786px and up screen width use the media query near the bottom of the document! */
+
+/* Global Styles */
+
+body {
+  margin-top: 50px;
+}
+
+#wrapper {
+  padding-left: 0;
+}
+
+#page-wrapper {
+  width: 100%;
+  padding: 5px 15px;
+}
+
+/* Test and Background */
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
+.text-justify {
+  text-align: justify;
+}
+.text-nowrap {
+  white-space: nowrap;
+}
+.text-lowercase {
+  text-transform: lowercase;
+}
+.text-uppercase {
+  text-transform: uppercase;
+}
+.text-capitalize {
+  text-transform: capitalize;
+}
+.text-muted {
+  color: #777;
+}
+.text-primary {
+  color: #428bca;
+}
+a.text-primary:hover {
+  color: #3071a9;
+}
+.text-success {
+  color: #3c763d;
+}
+a.text-success:hover {
+  color: #2b542c;
+}
+.text-info {
+  color: #31708f;
+}
+a.text-info:hover {
+  color: #245269;
+}
+.text-warning {
+  color: #8a6d3b;
+}
+a.text-warning:hover {
+  color: #66512c;
+}
+.text-danger {
+  color: #a94442;
+}
+a.text-danger:hover {
+  color: #843534;
+}
+.bg-primary {
+  color: #fff;
+  background-color: #428bca;
+}
+a.bg-primary:hover {
+  background-color: #3071a9;
+}
+.bg-success {
+  background-color: #dff0d8;
+}
+a.bg-success:hover {
+  background-color: #c1e2b3;
+}
+.bg-info {
+  background-color: #d9edf7;
+}
+a.bg-info:hover {
+  background-color: #afd9ee;
+}
+.bg-warning {
+  background-color: #fcf8e3;
+}
+a.bg-warning:hover {
+  background-color: #f7ecb5;
+}
+.bg-danger {
+  background-color: #f2dede;
+}
+a.bg-danger:hover {
+  background-color: #e4b9b9;
+}
+
+/* Nav Messages */
+
+.messages-dropdown .dropdown-menu .message-preview .avatar,
+.messages-dropdown .dropdown-menu .message-preview .name,
+.messages-dropdown .dropdown-menu .message-preview .message,
+.messages-dropdown .dropdown-menu .message-preview .time {
+  display: block;
+}
+
+.messages-dropdown .dropdown-menu .message-preview .avatar {
+  float: left;
+  margin-right: 15px;
+}
+
+.messages-dropdown .dropdown-menu .message-preview .name {
+  font-weight: bold;
+}
+
+.messages-dropdown .dropdown-menu .message-preview .message {
+  font-size: 12px;
+}
+
+.messages-dropdown .dropdown-menu .message-preview .time {
+  font-size: 12px;
+}
+
+
+/* Nav Announcements */
+
+.announcement-heading {
+  font-size: 50px;
+  margin: 0;
+}
+
+.announcement-text {
+  margin: 0;
+}
+
+/* Table Headers */
+
+table.tablesorter thead {
+  cursor: pointer;
+}
+
+/* Flot Chart Containers */
+
+.flot-chart {
+  display: block;
+  height: 400px;
+}
+
+.flot-chart-content {
+  width: 100%;
+  height: 100%;
+} 
+
+.flot-tooltip {
+  position: absolute;
+  display: none;
+  opacity: 0.80;
+  border: 1px solid #fdd;
+  padding: 2px 4px;
+}
+
+/* Edit Below to Customize Widths > 768px */
+@media (min-width:768px) {
+
+  /* Wrappers */
+
+  #wrapper {
+	padding-left: 225px;
+  }
+
+  #page-wrapper {
+	padding: 15px 25px;
+  }
+
+  /* Side Nav */
+
+  .side-nav {
+	margin-left: -225px;
+	left: 225px;
+	width: 225px;
+	position: fixed;
+	top: 50px;
+	height: 100%;
+	border-radius: 0;
+	border: none;
+	background-color: #222222;
+	overflow-y: auto;
+  }
+
+  /* Bootstrap Default Overrides - Customized Dropdowns for the Side Nav */
+
+  .side-nav>li.dropdown>ul.dropdown-menu {
+	position: relative;
+	min-width: 225px;
+	margin: 0;
+	padding: 0;
+	border: none;
+	border-radius: 0;
+	background-color: transparent;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+  }
+
+  .side-nav>li.dropdown>ul.dropdown-menu>li>a {
+	color: #999999;
+	padding: 15px 15px 15px 25px;
+  }
+
+  .side-nav>li.dropdown>ul.dropdown-menu>li>a:hover,
+  .side-nav>li.dropdown>ul.dropdown-menu>li>a.active,
+  .side-nav>li.dropdown>ul.dropdown-menu>li>a:focus {
+	color: #fff;
+	background-color: #080808;
+  }
+
+  .side-nav>li>a {
+	width: 225px;
+  }
+
+  .navbar-inverse .navbar-nav>li>a:hover,
+  .navbar-inverse .navbar-nav>li>a:focus {
+	background-color: #080808;
+  }
+
+  /* Nav Messages */
+
+  .messages-dropdown .dropdown-menu {
+	min-width: 300px;
+  }
+
+  .messages-dropdown .dropdown-menu li a {
+	white-space: normal;
+  }
+
+  .navbar-collapse {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+
+}
+
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+  background-image: linear-gradient(to left, rgba(152, 225, 255, 0.6), rgba(152, 225, 255, 0.6));
+  border-color: rgba(152, 225, 255, 0.6);
+  text-shadow: 0 -1px 0 rgba(152, 225, 255, 0.6);  
+}
+
+.form-group .select2-container-multi .select2-choices .select2-search-field input{
+	padding: 6px 12px;
+}
+
+.form-group .select2-container-disabled .select2-choices {
+    cursor: not-allowed;
+}
+
+select2-container-disabled
+#page-wrapper .pagination{
+    margin-top:-15px;
+}
+
+.smallstat {
+    background: none repeat scroll 0 0 white;
+    padding: 10px;
+    position: relative;
+}
+.box {
+    border-radius: 2px;
+    box-shadow: 0 1px 0 1px #e4e6eb;
+    margin: 0 0 30px;
+}
+
+.box .box-header {
+    background: none repeat scroll 0 0 #3579B2;
+    border-radius: 2px 2px 0 0;
+    color: white;
+    font-size: 16px;
+    overflow: hidden;
+}
+
+.box .box-content {
+    background: none repeat scroll 0 0 white;
+    border-radius: 0 0 2px 2px;
+    padding: 10px;
+}
+h2 {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 16px;
+}
+.box .box-header h2 {
+    float: left;
+    margin: 0 0 0 20px;
+    padding: 10px 0;
+}
+.smallstat .boxchart-overlay.blue {
+    background: none repeat scroll 0 0 #36a9e1;
+}
+.smallstat .boxchart-overlay {
+    border-radius: 2px;
+    float: left;
+    margin-right: 10px;
+    overflow: hidden;
+    padding: 10px;
+    text-align: center;
+    width: 84px;
+}
+.blue {
+    color: #36a9e1;
+}
+.red {
+    color: #ff5454;
+}
+.smallstat .title {
+    color: #c7cbd5;
+    display: block;
+    font-size: 14px;
+    margin-top: 4px;
+    top: 12px;
+}
+.smallstat .value {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.dropdown-menu a {
+    cursor: pointer;
+}
+
+#page-wrapper{
+    background: none repeat scroll 0 0 #f5f5f5;
+    min-height: 100%;
+    padding: 20px;
+    position: relative;
+}
+.search-bar{
+    padding-bottom: 6px;
+}
+
+.editor .editor-inner {
+    background-color: white;
+    border: 1px solid rgb(204, 204, 204);
+    border-collapse: separate;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.075) inset;
+    box-sizing: content-box;
+    height: 250px;
+    max-height: 250px;
+    overflow: auto;
+    outline: medium none;    
+    padding: 12px;
+    margin-top:12px;
+}
+.editor .editor-inner.unselectable {
+    cursor: not-allowed;
+    -moz-user-select: none; 
+}
+.editor textarea {
+	height: 250px;
+    max-height: 250px;
+    resize: none;
+}
+.editor .form-horizontal .form-group {
+    margin-left: 0;
+    margin-right: 0;
+}
+.editor blockquote {
+    border-left: 5px solid #eeeeee;
+    margin: 0 0 20px;
+    padding: 0 0 0 15px;
+}
+.simple-dialog{
+	width:870px;
+	margin: 90px auto;
+}
+.navbar-title {
+  color: #999;
+  float: left;
+  font-size: 18px;
+  line-height: 20px;
+  padding: 15px;
+  cursor:default;
+}
+.tooltip {
+    z-index: 2000 !important;
+}
+.mail-dialog {
+  width: 870px;
+}
+.clickable {
+  cursor: pointer;
+}
+.focused {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+.list-group-item.focused {
+  border: none;
+} 
+.visibility-hidden {
+  visibility: hidden;
+}
+.no-padding {
+  padding: 0;
+}
+.no-margin {
+	margin: 0;
+}

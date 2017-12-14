@@ -1,0 +1,81 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security.xsd">
+
+
+    <!--配置不需要进行安全校验的资源-->
+    <http pattern="/login*" security="none" />
+    <http pattern="/api/hello" security="none" />
+    <http pattern="/**/*.js" security="none" />
+    <http pattern="/**/*.css" security="none" />
+    <http pattern="/**/*.png" security="none" />
+    <http pattern="/**/*.eot" security="none" />
+    <http pattern="/**/*.svg" security="none" />
+    <http pattern="/**/*.ttf" security="none" />
+    <http pattern="/**/*.woff" security="none" />
+    <http pattern="/**/*.otf" security="none" />
+    <!--详细的安全校验规则,主要以登陆为主-->
+    <http use-expressions="true" auto-config="true" entry-point-ref="authenticationProcessingFilterEntryPoint">
+        <!--登陆相关,主要设置登陆页面的用户名和密码的属性名称,以及提交登陆的action名称-->
+        <form-login login-page="/login" password-parameter="PassWord" username-parameter="UserName"
+                    login-processing-url="/login"
+                    default-target-url="/index" always-use-default-target="true"
+                    authentication-failure-handler-ref="aleiyeAuthenticationFailureHandler"
+                    authentication-success-handler-ref="aleiyeAuthenticationSuccessHandler"/>
+        <custom-filter ref="authenticationProcessingFilter" before="FILTER_SECURITY_INTERCEPTOR"/>
+        <!--<custom-filter ref="loginFilter" after="FORM_LOGIN_FILTER"/>-->
+        <logout invalidate-session="true" logout-success-url="/login" logout-url="/j_spring_security_logout"/>
+        <session-management invalid-session-url="/login" session-authentication-error-url="/login"/>
+        <csrf request-matcher-ref="true"/>
+    </http>
+
+    <beans:bean id="authenticationProcessingFilterEntryPoint"
+                class="com.zxl.test.myproject.service.DTAuthenticationProcessingFilterEntryPoint">
+    </beans:bean>
+    <!--登陆失败的处理类,可以添加错误信息-->
+    <beans:bean id="aleiyeAuthenticationFailureHandler"
+                class="com.zxl.test.myproject.service.DTAuthenticationFailureHandler">
+        <beans:constructor-arg name="defaultFailureUrl" value="/login"/>
+    </beans:bean>
+    <!--登陆成功的处理类,可以进行session的封装等-->
+    <beans:bean id="aleiyeAuthenticationSuccessHandler"
+                class="com.zxl.test.myproject.service.DTAuthenticationSuccessHandler">
+        <beans:constructor-arg name="defaultTargetUrl" value="/index"/>
+    </beans:bean>
+    <!-- 用户权限配置 -->
+    <beans:bean id="authenticationProcessingFilter"
+                class="com.zxl.test.myproject.service.DTAuthenticationProcessingFilter">
+        <!-- 用户拥有的权限 -->
+        <beans:property name="authenticationManager" ref="aleiyeAuthenticationManager"/>
+        <!-- 用户是否拥有所请求资源的权限 -->
+        <beans:property name="accessDecisionManager" ref="aleiyeAccessDecisionManager"/>
+        <!-- 资源与权限对应关系 -->
+        <beans:property name="securityMetadataSource" ref="aleiyeSecurityMetadataSource"/>
+    </beans:bean>
+    <!-- 校验是否登陆 -->
+    <!--<beans:bean id="loginFilter" class="com.aleiye.web.system.security.filter.AleiyeLoginFilter">-->
+        <!--<beans:constructor-arg name="loginUrl" value="/login"/>-->
+        <!--<beans:constructor-arg name="indexUrl" value="/index"/>-->
+    <!--</beans:bean>-->
+    <!--校验用户权限-->
+    <beans:bean id="aleiyeAccessDecisionManager"
+                class="com.zxl.test.myproject.service.DTAccessDecisionManager"/>
+    <beans:bean id="aleiyeSecurityMetadataSource"
+                class="com.zxl.test.myproject.service.DTSecurityMetaDataSource"/>
+    <!--登陆用户信息查询-->
+    <beans:bean id="daoUserProvider" class="com.zxl.test.myproject.service.DTAuthenticationProvider">
+        <beans:property name="userDetailsService" ref="userDetailService" />
+        <beans:property name="passwordEncoder" ref="md5PasswordEncoder" />
+    </beans:bean>
+    <!--权限校验管理类-->
+    <authentication-manager alias="aleiyeAuthenticationManager">
+        <authentication-provider ref="daoUserProvider" />
+    </authentication-manager>
+    <beans:bean id="md5PasswordEncoder"
+                class="org.springframework.security.authentication.encoding.Md5PasswordEncoder"/>
+    <beans:bean id="userDetailService" class="com.zxl.test.myproject.service.UserDetailService"/>
+</beans:beans>

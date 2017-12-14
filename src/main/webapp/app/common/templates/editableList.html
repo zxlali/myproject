@@ -1,0 +1,34 @@
+<div class="panel panel-primary">
+  <div class="panel-heading input-group input-group-sm">
+    <input ng-model="options.searchValue" class="form-control" placeholder="{{options.title}}" />
+    <span class="input-group-btn">
+      <button ng-click="onSearch()" type="button" class="btn btn-primary">
+        <span class="glyphicon glyphicon-search"></span>
+      </button> 
+    </span>
+    <span class="input-group-btn">
+      <button ng-click="onItemNew()" type="button" class="btn btn-primary">
+        <span class="glyphicon glyphicon-plus"></span>
+      </button> 
+    </span>
+  </div>
+  <div class="panel-body no-padding">
+    <ul class="list-group no-margin">
+	    <li ng-click="onItemClick()" ng-repeat="item in dataset" ng-class="{active: item === options.currentItem}"
+	      class="list-group-item clickable" data-type="text">
+	      {{item[options.textField] | stringToJson:'en_US'}}
+	      <div class="btn-group pull-right">
+	        <button ng-click="onItemEdit($event)" type="button" class="btn btn-default btn-xs">
+            <span class="glyphicon glyphicon-pencil"></span>
+          </button>
+          <button ng-click="onItemDelete($event)" type="button" class="btn btn-default btn-xs pull-right">
+            <span class="glyphicon glyphicon-trash"></span>
+          </button>
+	      </div>
+	    </li>
+    </ul>
+    <div ng-show="options.showPagination">
+    </div>
+  </div>
+
+</div>  

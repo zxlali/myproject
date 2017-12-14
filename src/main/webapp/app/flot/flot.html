@@ -1,0 +1,37 @@
+<div class="page-header">
+<h1>
+    {{todo.user}}'s To Do List
+    <span class="label label-default" ng-class="warningLevel()" ng-hide="incompleteCount()==0">{{incompleteCount()}}</span>
+</h1>
+</div>
+<div class="panel">
+<div class="input-group">
+<input class="form-control" ng-model="actionText"/>
+<span class="input-group-btn">
+<button class="btn btn-default" ng-click="addNewItem(actionText)">Add</button>
+</span>
+</div>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Description</th>
+<th>Done</th>
+<th>AGE</th>
+<th>OP</th>
+</tr>
+</thead>
+<tbody>
+<tr ng-repeat="item in todo.items | checkedItems:showComplete | orderBy: 'age'">
+<td>{{item.name}}</td>
+<td><input type="checkbox" ng-model="item.age"/>{{item.name}}</td>
+<td>{{item.age}}</td>
+<td><button class="btn btn-default" ng-click="delItem()">Del</button></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="checkbox-inline">
+<label><input type="checkbox" ng-model="showComplete">Show Complete</label>
+</div>
+<flot dataset="dataset" options="options" height="480px" eoptions="userActiveExtraOptions"></flot>
+
